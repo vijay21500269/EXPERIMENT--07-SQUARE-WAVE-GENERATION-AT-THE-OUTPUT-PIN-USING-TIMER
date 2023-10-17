@@ -96,39 +96,74 @@ Step14. click on debug and simulate using simulation as shown below
   
 
 ## STM 32 CUBE PROGRAM :
+~~~
+#include "main.h"
 
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_TIM2_Init(void);
+
+int main(void)
+{
+ 
+  MX_TIM2_Init();
+
+  HAL_TIM_Base_Start(&htim2);
+  HAL_TIM_PWM_Init(&htim2);
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+
+  while (1)
+
+}
+
+
+
+~~~
 
 
 
 
 ## Output screen shots of proteus  :
- 
+ ![7-1-overlay](https://github.com/vijay21500269/EXPERIMENT--07-SQUARE-WAVE-GENERATION-AT-THE-OUTPUT-PIN-USING-TIMER/assets/94381788/8d94dab2-6110-45bb-9686-eb5abc1edeb3)
+
  
  ## CIRCUIT DIAGRAM (EXPORT THE GRAPHICS TO PDF AND ADD THE SCREEN SHOT HERE): 
- 
+ ![7-5-overlay](https://github.com/vijay21500269/EXPERIMENT--07-SQUARE-WAVE-GENERATION-AT-THE-OUTPUT-PIN-USING-TIMER/assets/94381788/43fdd80f-4709-49ae-b53b-e91e796be64d)
+
 
 ## DUTY CYCLE AND FREQUENCY CALCULATION 
 FOR PULSE AT 500
+![77-1](https://github.com/vijay21500269/EXPERIMENT--07-SQUARE-WAVE-GENERATION-AT-THE-OUTPUT-PIN-USING-TIMER/assets/94381788/572855ab-cebd-4a52-94eb-644a13eae10c)
 
-TON = 
-TOFF=
-TOTAL TIME = 
+~~~
+TON = 2ms
+TOFF= 2ms
+TOTAL TIME = 4 
 FREQUENCY = 1/(TOTAL TIME)
-
-FOR PULSE AT 700
-
-TON = 
-TOFF=
-TOTAL TIME = 
-FREQUENCY = 1/(TOTAL TIME)
+= 1/(410^-3)
+= 250Hz
+~~~
+FOR PULSE AT 6000
+![77-2](https://github.com/vijay21500269/EXPERIMENT--07-SQUARE-WAVE-GENERATION-AT-THE-OUTPUT-PIN-USING-TIMER/assets/94381788/c0c88697-7684-42f5-8e66-2cce70d7307f)
+~~~
+TON = 3 * 0.5 = 1.5ms
+TOFF= 2.5 * 1 = 2.5ms
+TOTAL TIME = 2.5+1.5 = 4
+% DUTY=TON/TOTAL TIME*100%
+    =(1.5/4)*100 = 37.5%
+~~~
 
 
 FOR PULSE AT 900
-
-TON = 
-TOFF=
-TOTAL TIME = 
-FREQUENCY = 1/(TOTAL TIME)
+![77-3](https://github.com/vijay21500269/EXPERIMENT--07-SQUARE-WAVE-GENERATION-AT-THE-OUTPUT-PIN-USING-TIMER/assets/94381788/d65c4dfc-94da-4375-801a-2935b838615e)
+~~~
+TON = 5 * 0.5 = 2.5ms
+TOFF= 0.5 * 1.5 = 0.75ms
+TOTAL TIME = 2.5+0.75 = 3.25
+% DUTY=TON/TOTAL TIME*100%
+    =(2.5/3.25)*100 = 77.0%
+~~~
 
 
 ## Result :
